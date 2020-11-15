@@ -12,6 +12,7 @@ public class Main {
     linkedList.print();
     //System.out.println(linkedList.indexOf(30));
     linkedList.removeFirst();
+    linkedList.removeLast();
     linkedList.print();
   }
 }

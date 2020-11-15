@@ -54,6 +54,60 @@ public class LinkedList {
 
   }
 
+  /*
+    public void removeLast() {
+      //[10,20,30,40,50]
+      if (isEmpty())
+        System.out.println("List is empty");
+      else {
+        Node current = first;
+        Node previous = null;
+        while (current.next != null) {
+          previous = current;
+          current = current.next;
+        }
+        previous.next = null; //40
+        last = previous;
+      }
+
+    }
+  */
+  /*public void removeLast() {
+    //[10,20,30,40,50]
+    Node current = first;
+    Node next;
+    while (current.next != null) {
+      next = current.next; //50=40.next
+      if (next.next == null){ //50.next
+        //System.out.println("last but one node=" + current);
+        current.next=null;
+        last=current;
+        return;
+      }
+      else
+        current = next;
+    }
+
+
+  }*/
+
+  public void removeLast() {
+    Node previous = getPrevious(last);
+    last = previous;
+    last.next = null;
+  }
+
+  public Node getPrevious(Node last) {
+    Node current = first;
+    while (current != null) {
+      if (current.next == last)
+        return current;
+      else
+        current = current.next;
+    }
+    return null;
+  }
+
   public int indexOf(int item) {
     int index = 0;
     Node current = first;
