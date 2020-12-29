@@ -1,7 +1,5 @@
 package com.home.models;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-
 public class LinkedList {
     public Node first;
     public Node last;
@@ -54,6 +52,49 @@ public class LinkedList {
             System.out.println("List is empty");
         }
 
+      /*
+        public void removeLast() {
+          //[10,20,30,40,50]
+          if (isEmpty())
+            System.out.println("List is empty");
+          else {
+            Node current = first;
+            Node previous = null;
+            while (current.next != null) {
+              previous = current;
+              current = current.next;
+            }
+            previous.next = null; //40
+            last = previous;
+          }
+
+        }
+      */
+      /*public void removeLast() {
+        //[10,20,30,40,50]
+        Node current = first;
+        Node next;
+        while (current.next != null) {
+          next = current.next; //50=40.next
+          if (next.next == null){ //50.next
+            //System.out.println("last but one node=" + current);
+            current.next=null;
+            last=current;
+            return;
+          }
+          else
+            current = next;
+        }
+
+
+      }*/
+
+    }
+
+    public void removeLast() {
+        Node previous = getPrevious(last);
+        last = previous;
+        last.next = null;
     }
 
     public int indexOf(int item) {
@@ -70,9 +111,9 @@ public class LinkedList {
 
     //This method switches nodes directly, without changing data.
 //Actual: 10 -> 20 -> 30 -> 40 -> 50 -> 60 -> 70  Expected: 10 -> 20 -> 50 -> 40 -> 30 -> 60 -> 70
-/* Function to swap nodes x and y in linked list by
+    /* Function to swap nodes x and y in linked list by
 changing links */
-   public void swapNodes(Node head, int x, int y) {
+    public void swapNodes(Node head, int x, int y) {
 // Nothing to do if x and y are same
         if (x == y) return;
 
@@ -90,10 +131,10 @@ changing links */
             currY = currY.next;
         }
 
-     System.out.println("currx="+currX);
-     System.out.println("curry="+currY);
-     System.out.println("prevx="+prevX);
-     System.out.println("prevY="+prevY);
+        System.out.println("currx=" + currX);
+        System.out.println("curry=" + currY);
+        System.out.println("prevx=" + prevX);
+        System.out.println("prevY=" + prevY);
 // If either x or y is not present, nothing to do
         if (currX == null || currY == null)
             return;
@@ -109,20 +150,28 @@ changing links */
         else // Else make x as new head
             head = currX;
 
-     System.out.println("prevx.next="+prevX);
-     //System.out.println("prevY.next="+prevY);
+        System.out.println("prevx.next=" + prevX);
+        //System.out.println("prevY.next="+prevY);
 
-     System.out.println("currY="+currY);
-     //System.out.println("currX="+currX);
+        System.out.println("currY=" + currY);
+        //System.out.println("currX="+currX);
 // Swap next pointers
         Node temp = currY.next;
         currY.next = currX.next;
         currX.next = temp;
     }
 
-
+    public Node getPrevious(Node last) {
+        Node current = first;
+        while (current != null) {
+            if (current.next == last)
+                return current;
+            else
+                current = current.next;
+        }
+        return null;
+    }
 }
-
 
 class Node {
     int value;
