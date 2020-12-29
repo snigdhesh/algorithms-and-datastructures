@@ -110,9 +110,11 @@ public class LinkedList {
     }
 
     //This method switches nodes directly, without changing data.
-//Actual: 10 -> 20 -> 30 -> 40 -> 50 -> 60 -> 70  Expected: 10 -> 20 -> 50 -> 40 -> 30 -> 60 -> 70
-    /* Function to swap nodes x and y in linked list by
-changing links */
+    //Actual: 10 -> 20 -> 30 -> 40 -> 50 -> 60 -> 70  Expected: 10 -> 20 -> 50 -> 40 -> 30 -> 60 -> 70
+    /* Function to swap nodes x and y in linked list by changing links
+    *  source: https://www.geeksforgeeks.org/swap-nodes-in-a-linked-list-without-swapping-data/
+    *  */
+
     public void swapNodes(Node head, int x, int y) {
 // Nothing to do if x and y are same
         if (x == y) return;
